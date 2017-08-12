@@ -30,9 +30,9 @@ var articleOne={
 
 function createTemplate(data){
     
-     $title=data.title;
-     $heading=data.heading;
-     $content=data.content;
+     title=data.title;
+     heading=data.heading;
+     content=data.content;
     
     var htmlTemplate=`
             <html>
