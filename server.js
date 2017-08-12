@@ -10,10 +10,10 @@ app.get('/', function (req, res) {
 });
 
 var articleOne={
-    $title:'Article One',
-    $heading:'Article one',
+    title:'Article One',
+    heading:'Article one',
     date:'12 aug, 2017',
-    $content:`
+    content:`
             <P>
                 This is the contents of article one......  This is the contents of article one......This is the contents of article one......This is the contents of article one......   
             </P>
@@ -29,6 +29,10 @@ var articleOne={
 };
 
 function createTemplate(data){
+    
+     $title=data.title;
+     $heading=data.heading;
+     $content=data.content;
     
     var htmlTemplate=`
             <html>
