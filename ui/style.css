@@ -1,6 +1,6 @@
 body {
     font-family: sans-serif;
-    background-color: lightgrey;
+    //background-color: lightgrey;
     margin-top: 75px;
 }
 
@@ -18,5 +18,12 @@ body {
 
 .img-medium {
     height: 200px;
+}
+
+.container{
+     color:grey;
+    font-family:sans-serif;
+    max-width:800px;
+    margin:0 auto;
 }
 
