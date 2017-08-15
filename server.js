@@ -10,9 +10,9 @@ app.get('/', function (req, res) {
 });
     var articles={
         'article-one':{
-            title:'Article One',
-            heading:'Article one',
-            date:'12 aug, 2017',
+            title: 'Article One',
+            heading: 'Article one',
+            date: '12 aug, 2017',
             content:`
                     <P>
                         This is the contents of article one......  This is the contents of article one......This is the contents of article one......This is the contents of article one......   
