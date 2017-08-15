@@ -38,7 +38,7 @@ app.get('/', function (req, res) {
                         This is the contents of article three......  This is the contents of article three......This is the contents of article three......This is the contents of article three......   
                     </P>
                     `
-        };
+        }
     };
 function createTemplate(data){
     
