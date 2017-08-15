@@ -8,26 +8,38 @@ app.use(morgan('combined'));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-
-var articleOne={
-    title:'Article One',
-    heading:'Article one',
-    date:'12 aug, 2017',
-    content:`
-            <P>
-                This is the contents of article one......  This is the contents of article one......This is the contents of article one......This is the contents of article one......   
-            </P>
-            
-            <P>
-                This is the contents of article one......  This is the contents of article one......This is the contents of article one......This is the contents of article one......   
-            </P>
-            
-            <P>
-                This is the contents of article one......  This is the contents of article one......This is the contents of article one......This is the contents of article one......   
-            </P>
-            `
-};
-
+    var articles={
+        articleOne:{
+            title:'Article One',
+            heading:'Article one',
+            date:'12 aug, 2017',
+            content:`
+                    <P>
+                        This is the contents of article one......  This is the contents of article one......This is the contents of article one......This is the contents of article one......   
+                    </P>
+                    `
+        },
+        articleTwo:{
+            title:'Article Two',
+            date:'15 Aug',
+            heading:'hello its article two',
+            content:`
+                    <P>
+                        This is the contents of article two......  This is the contents of article two......This is the contents of article two......This is the contents of article two......   
+                    </P>
+                    `
+        },
+        articleThree:{
+            title:'Article Three',
+            date:'17 Aug',
+            heading:'hello its article three',
+            content:`
+                    <P>
+                        This is the contents of article three......  This is the contents of article three......This is the contents of article three......This is the contents of article three......   
+                    </P>
+                    `
+        };
+    };
 function createTemplate(data){
     
      var title=data.title;
@@ -61,65 +73,9 @@ function createTemplate(data){
     return htmlTemplate;
 }
 
-var articleTwo={
-    title:'Article Two',
-    date:'15 Aug',
-    heading:'hello its article two',
-    content:`
-            <P>
-                This is the contents of article two......  This is the contents of article two......This is the contents of article two......This is the contents of article two......   
-            </P>
-            
-            <P>
-                This is the contents of article two......  This is the contents of article two......This is the contents of article two......This is the contents of article one......   
-            </P>
-            
-            <P>
-                ThisThis is the contents of article two......  This is the contents of article two......This is the contents of article two......This is the contents of article one......   
-            </P>`
-};
-
-function createTemplate1(data){
-    var title= data.title;
-    var heading=data.heading;
-    var content=data.content;
-    var htmlTemplate=`
-            <html>
-                <head>
-                    <title> ${title} </title>
-                    <meta name="viewport" content="width-device-width,initial-scale=1" />
-                    <link rel="stylesheet" type="text/css" href="/ui/style.css" />
-                </head>
-                <body>
-                  <div class="container">    
-                    <div>
-                        <a href='/'>HOME</a> <hr>
-                    </div>
-                    
-                    <div>
-                        <h1>${heading}</h1>
-                    </div>
-            
-                    <div>
-                        ${content}
-                    </div>
-                  </div>
-                </body>
-            </html>
-    `;
-    return htmlTemplate;
-}
-
-app.get('/article-one',function(req,res){
-    res.send(createTemplate(articleOne));
-});
-
-app.get('/article-two',function(req,res){
-    res.send(createTemplate1(articleTwo));
-});
-
-app.get('/article-three',function(req,res){
-    res.sendFile(path.join(__dirname,'ui','article-three.html'));
+app.get('/:articleName',function(req,res){
+    var articleName= req.param.articleName;
+    res.send(createTemplate(articleName[articles]));
 });
 
 app.get('/ui/style.css', function (req, res) {
