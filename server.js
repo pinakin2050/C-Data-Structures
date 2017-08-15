@@ -61,12 +61,61 @@ function createTemplate(data){
     return htmlTemplate;
 }
 
+var articleTwo={
+    title:'Article Two',
+    date:'15 Aug',
+    heading:'hello its article two',
+    content:`
+            <P>
+                This is the contents of article two......  This is the contents of article two......This is the contents of article two......This is the contents of article two......   
+            </P>
+            
+            <P>
+                This is the contents of article two......  This is the contents of article two......This is the contents of article two......This is the contents of article one......   
+            </P>
+            
+            <P>
+                ThisThis is the contents of article two......  This is the contents of article two......This is the contents of article two......This is the contents of article one......   
+            </P>`
+};
+
+function createTemplate1(data){
+    var title= data.title;
+    var heading=data.heading;
+    var content=data.content;
+    var htmlTemplate=`
+            <html>
+                <head>
+                    <title> ${title} </title>
+                    <meta name="viewport" content="width-device-width,initial-scale=1" />
+                    <link rel="stylesheet" type="text/css" href="/ui/style.css" />
+                </head>
+                <body>
+                  <div class="container">    
+                    <div>
+                        <a href='/'>HOME</a> <hr>
+                    </div>
+                    
+                    <div>
+                        <h1>${heading}</h1>
+                    </div>
+            
+                    <div>
+                        ${content}
+                    </div>
+                  </div>
+                </body>
+            </html>
+    `;
+    return htmlTemplate;
+}
+
 app.get('/article-one',function(req,res){
     res.send(createTemplate(articleOne));
 });
 
 app.get('/article-two',function(req,res){
-    res.sendFile(path.join(__dirname,'ui','article-two.html'));
+    res.send(createTemplate1(articleTwo));
 });
 
 app.get('/article-three',function(req,res){
