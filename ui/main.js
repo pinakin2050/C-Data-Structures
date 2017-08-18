@@ -1,10 +1,10 @@
 console.log('Loaded!');
-var image = document.getElementById("main-img");
+var img = document.getElementById("main-img");
+var marginLeft=0;
+function moveRight(){
+      marginLeft = marginLeft+5;
+      img.style.marginLeft=marginLeft+'px';
+}
 image.onclick = function(){
    var interval = setInterval(moveRight,10);   
 };
-var LeftMargin=0;
-function moveRight(){
-      LeftMargin = LeftMargin+5;
-      image.style.LeftMargin=LeftMargin+'px';
-}
