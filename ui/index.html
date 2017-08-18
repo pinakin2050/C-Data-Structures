@@ -1,7 +1,8 @@
+<!doctype html>
 <html>
     <head>
         <link href="/ui/style.css" rel="stylesheet" />
-        <script language="JavaScript" type="text/javascript" src="/ui/main1.js"> </script> 
+       <!-- <script type="text/javascript" src="/ui/main1.js"> </script> -->
     </head>
     <body>
         <div class="center">
@@ -14,7 +15,8 @@
 			I made some changes locally..
         </div>
         <script>
-            alert('Hi...I am JS!');
+            var element = document.getElementById('main-text1');
+            element.InnerHTML="NEW VALUE";
         </script>
           
     </body>
