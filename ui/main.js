@@ -1,5 +1,5 @@
 console.log('Loaded!');
-var image = document.getElementById('main-img');
+var image = document.getElementById("main-img");
 image.onclick = function(){
    var interval = setInterval(moveRight,10);   
 };
