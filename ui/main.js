@@ -1,3 +1,10 @@
 console.log('Loaded!');
-var element = document.getElementById("maint");
-element.innerHTML = 'New Text';
+var image = document.getElementById('main-img');
+img.onclick = function(){
+   var interval = setInterval(moveRight,10);   
+};
+var LeftMargin=0;
+function moveRight(){
+      LeftMargin = LeftMargin+5;
+      image.style.LeftMargin=LeftMargin+'px';
+}
