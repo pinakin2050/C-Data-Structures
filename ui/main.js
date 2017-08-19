@@ -71,7 +71,7 @@ submit.onclick = function()
           //make req
           var nameInput = document.getElementById("name");
           var name = nameInput.value;
-          request.open('GET','http://pinakin2050.imad.hasura-app.io/submit-name?='+name,true);
+          request.open('GET','http://pinakin2050.imad.hasura-app.io/submit-name?name='+name,true);
           request.send(null);
     };
 
