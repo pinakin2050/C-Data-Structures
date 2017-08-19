@@ -10,6 +10,7 @@ img.onclick = function(){
    var interval = setInterval(moveRight,5);   
 };*/
 
+/*
 //counter code
 var button = document.getElementById("counter");
 button.onclick = function()
@@ -36,6 +37,42 @@ button.onclick = function()
         //make http req
         request.open('GET','http://pinakin2050.imad.hasura-app.io/counter',true);
         request.send(null);
+    };
+*/
+
+//submit name
+var submit = document.getElementById("submit_btn");
+submit.onCLick = function()
+{
+    //create req object
+    var request = new XMLHttpRequest();
+    
+    //capture res & store it in a var
+    request.onreadystatechange = function()
+    {
+        if(request.readyState===XMLHttpRequest.DONE)
+                {
+                  //take some action
+                  if(request.status === 200)
+                   {
+                      var names = request.responseText;
+                      names = JSON.parse(names);
+                      var list =' ' ;
+                      for(var i=0;i<names.length;i++)
+                        {
+                            list = '<li>'+names[i]+'</li>';
+                        }
+                      var ui = document.getElementById("namelist");
+                      ui.innerHTML = list;
+                   }
+                }
+                //not done yet
+          };
+          //make req
+          var nameInput = document.getElementById("name");
+          var name = nameInput.value;
+          request.open('GET','http://pinakin2050.imad.hasura-app.io/submit-name?='+name,true);
+          request.send(null);
     };
 
 
