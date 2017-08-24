@@ -4,8 +4,8 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-const env = require('env2')('/ui/db_config.env');
-console.log(process.env.DB_PASSWORD);
+//const env = require('env2')('/ui/db_config.env');
+//console.log(process.env.DB_PASSWORD);
 var Pool = require('pg').Pool;
 var config = {
     user: 'pinakin2050',
