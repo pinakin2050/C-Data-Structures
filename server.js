@@ -10,7 +10,7 @@ var config = {
     database:'pinakin2050',
     host:'db.imad.hasura-app.io',
     port:'5432',
-    passsword:'db-pinakin2050-98484' //process.env.DB_PASSWORD 
+    passsword:db-pinakin2050-98484 //process.env.DB_PASSWORD 
 };
 
 app.get('/', function (req, res) {
