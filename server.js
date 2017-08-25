@@ -25,7 +25,7 @@ app.get('/submit-name',function(req,res){
     res.send(JSON.stringify(names));
 });
 
-const env = require('ui/.env');
+const env = require('evn2')('ui/.env');
 //console.log(process.env.DB_PASSWORD);
 var Pool = require('pg').Pool;
 var config = {
