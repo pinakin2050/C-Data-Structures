@@ -5,6 +5,11 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
+
 const env = require('env2')('./ui/.env');
 //console.log(process.env.DB_PASSWORD);
 var Pool = require('pg').Pool;
@@ -16,9 +21,6 @@ var config = {
     passsword:process.env.DB_PASS 
 };
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
-});
 
 var counter=0;
 app.get('/counter',function(req,res){
