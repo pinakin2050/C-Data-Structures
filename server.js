@@ -5,7 +5,7 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-//const env = require('env2')('db_config.json');
+const env = require('env2')('./ui/.env');
 //console.log(process.env.DB_PASSWORD);
 var Pool = require('pg').Pool;
 var config = {
@@ -13,7 +13,7 @@ var config = {
     database:'pinakin2050',
     host:'db.imad.hasura-app.io',
     port:'5432',
-    passsword:process.env.DB_PASSWORD 
+    passsword:process.env.DB_PASS 
 };
 
 app.get('/', function (req, res) {
