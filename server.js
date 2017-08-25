@@ -1,13 +1,13 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-
+var Pool = require('pg').Pool;
 var app = express();
 app.use(morgan('combined'));
 //var env = require('env2/');
 //const env = require('evn2')('./ui/.env');
 //console.log(process.env.DB_PASSWORD);
-var Pool = require('pg').Pool;
+
 var config = {
     user: 'pinakin2050',
     database:'pinakin2050',
