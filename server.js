@@ -10,10 +10,10 @@ app.use(morgan('combined'));
 
 var config = {
     user: 'pinakin2050',
-    database:'pinakin2050',
-    host:'db.imad.hasura-app.io',
-    port:'5432',
-    passsword:process.env.DB_PASS 
+    database: 'pinakin2050',
+    host: 'db.imad.hasura-app.io',
+    port: '5432',
+    passsword: process.env.DB_PASSWORD 
 };
 
 app.get('/', function (req, res) {
@@ -114,7 +114,7 @@ function createTemplate(data){
     return htmlTemplate;
 }
 
-app.get('/:articleName',function(req,res){
+app.get('/articles/:articleName',function(req,res){
     var articleName= req.params.articleName;
     res.send(createTemplate(articles[articleName]));
 });
