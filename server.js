@@ -2,7 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var crypto =require('crypto');
-var env = require('env');
+//var env = require('env');
 var Pool = require('pg').Pool;
 var app = express();
 app.use(morgan('combined'));
