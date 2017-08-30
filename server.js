@@ -13,7 +13,7 @@ app.use(morgan('combined'));
 var config = {
     user: 'pinakin2050',
     database: 'pinakin2050',
-    host: 'db.imad.hasura-app.io/',
+    host: 'db.imad.hasura-app.io',
     port: '5432',
     passsword: process.env.DB_PASSWORD 
 };
