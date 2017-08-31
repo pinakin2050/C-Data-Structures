@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var Pool = require('pg').Pool;
 var app = express();
 app.use(morgan('combined'));
-app.use(bodyParser.JSON());
+app.use(bodyParser.JSON);
 
 //const env = require('evn2')('./ui/.env');
 //console.log(process.env.DB_PASSWORD);
