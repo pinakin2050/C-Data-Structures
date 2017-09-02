@@ -9,9 +9,6 @@ var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 
-//const env = require('evn2')('./ui/.env');
-//console.log(process.env.DB_PASSWORD);
-
 var config = {
     user: 'pinakin2050',
     database: 'pinakin2050',
@@ -73,6 +70,29 @@ app.post('/create-user',function(req,res){
             res.status(500).send(err.toString);
         }else{
             res.send('User successfully created:'+username);
+        }
+    });
+});
+
+app.post('/login-user',function(req,res){
+    var username = req.body.username;
+    var pssword = req.body.password;
+    pool.query('SELECT *FROM "user" WHERE username=$1',[username],function(err,result){
+        if(err){
+            res.status(500).send(err.toString);
+        }else{
+            if(result.rows.length === 0){
+                res.send('USERNAME/PASSWORD IS INCORRECT!!');
+            }else{
+                var dbstring = result.row[0].password;
+                var salt = dbstring.split('$')[2];
+                var hasedPassword = hash(password,salt);
+                if(hasedPassword === dbstring){
+                    res.send("CREDENTIALS CORRECT...");
+                }else{
+                    res.status(403).send("USERNAME/PASSWORD IS INVALID!!!");
+                }
+            }
         }
     });
 });
