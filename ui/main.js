@@ -39,7 +39,7 @@ button.onclick = function()
         request.send(null);
     };
 */
-
+/*
 //submit name
 var submit = document.getElementById("submit_btn");
 submit.onclick = function()
@@ -74,5 +74,45 @@ submit.onclick = function()
           request.open('GET','http://pinakin2050.imad.hasura-app.io/submit-name?name='+name,true);
           request.send(null);
     };
+*/
+
+var submit = document.getElementById("submit_btn");
+submit.onclick = function()
+{
+    //create req object
+    var request = new XMLHttpRequest();
+    
+    //capture res & store it in a var
+    request.onreadystatechange = function()
+    {
+        if(request.readyState===XMLHttpRequest.DONE)
+                {
+                  //take some action
+                  if(request.status === 200)
+                   {
+                      alert("Logged in successfully..");
+                   }else if(request.status===403){
+                       alert("Logged in successfully..");
+                   }else if(request.status===500){
+                       alert("Something went wrong!!");
+                   }
+                }
+                //not done yet
+          };
+          //make req
+          var username= document.getElementById("username").value;
+          var password= document.getElementById("password").value;
+          request.open('POST','http://pinakin2050.imad.hasura-app.io/login',true);
+          request.send(JSON.stringify({username: username,password: password}));
+    };
+
+
+
+
+
+
+
+
+
 
 
