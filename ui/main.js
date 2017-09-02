@@ -76,7 +76,7 @@ submit.onclick = function()
     };
 */
 //submit username & password
-var submit = document.getElementById('submit_btn');
+var submit = document.getElementById("submit_btn");
 submit.onclick = function()
 {
     //create req object
