@@ -100,10 +100,10 @@ submit.onclick = function()
                 //not done yet
           };
           //make req
-          var username= document.getElementById('username').value;
-          var password= document.getElementById('password').value;
+          var username= document.getElementById("username").value;
+          var password= document.getElementById("password").value;
           console.log(username);
-                      console.log(password);
+          console.log(password);
                    
           request.open('POST', 'http://pinakin2050.imad.hasura-app.io/login',true);
           request.setRequestHeader('Content-Type', 'application/json');
