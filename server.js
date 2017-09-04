@@ -55,19 +55,19 @@ function hash(input,salt){
     return ["pbkdf2","10000",salt,hashed.toString('hex')];
 }
 
-app.post('/signin',function(req,res){
+app.post('/login',function(req,res){
     var username = req.body.username;
     var password = req.body.password;
     
     pool.query('SELECT * FROM "user" WHERE username= $1',[username],function(err,result){
     
         if(err){
-            res.status(500).send(err.toString);
+            res.status(500).send(err.toString());
         }else{
             if(result.rows.length === 0){
-                res.send('USERNAME/PASSWORD IS INCORRECT!!');
-            }else{
-                var dbstring = result.row[0].password;
+                res.send(403).send('USERNAME/PASSWORD IS INCORRECT!!');
+            }else{ //match the password 
+                var dbstring = result.rows[0].password;
                 var salt = dbstring.split('$')[2];
                 var hasedPassword = hash(password,salt);
                 if(hasedPassword === dbstring){
