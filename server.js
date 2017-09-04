@@ -65,12 +65,12 @@ app.post('/login',function(req,res){
             res.status(500).send(err.toString());
         }else{
             if(result.rows.length === 0){
-                res.send(403).send('USERNAME/PASSWORD IS INCORRECT!!');
+                res.send('USERNAME/PASSWORD IS INCORRECT!!');
             }else{ //match the password 
-                var dbstring = result.rows[0].password;
-                var salt = dbstring.split('$')[2];
+                var dbString = result.rows[0].password;
+                var salt = dbString.split('$')[2];
                 var hasedPassword = hash(password,salt);
-                if(hasedPassword === dbstring){
+                if(hasedPassword === dbString){
                     res.send("CREDENTIALS CORRECT...");
                 }else{
                     res.status(403).send("USERNAME/PASSWORD IS INVALID!!!");
