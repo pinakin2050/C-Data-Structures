@@ -91,10 +91,8 @@ submit.onclick = function()
                   if(request.status === 200)
                    {
                       alert("Logged in successfully..");
-                      console.log(username);
-                      console.log(password);
-                   }else if(request.status===403){
-                       alert("Logged in successfully..");
+                    }else if(request.status===403){
+                       alert("USERNAME/PASSWORD is incorrect!");
                    }else if(request.status===500){
                        alert("Something went wrong!!");
                    }
@@ -104,9 +102,12 @@ submit.onclick = function()
           //make req
           var username= document.getElementById('username').value;
           var password= document.getElementById('password').value;
-          request.open('POST','http://pinakin2050.imad.hasura-app.io/login',true);
+          console.log(username);
+                      console.log(password);
+                   
+          request.open('POST', 'http://pinakin2050.imad.hasura-app.io/login',true);
           request.setRequestHeader('Content-Type', 'application/json');
-          request.send(JSON.stringify({"username":"username", "password":"password"}));
+          request.send(JSON.stringify({username: username, password: password}));
     };
 
 
