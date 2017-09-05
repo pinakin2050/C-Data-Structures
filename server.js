@@ -80,7 +80,6 @@ app.post('/login',function(req,res){
     var username = req.body.username;
     var password = req.body.password;
     
-    res.send(username);
     res.send(password);
 });
 
