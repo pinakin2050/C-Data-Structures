@@ -125,7 +125,7 @@ app.post('/login',function(req,res){
             res.status(500).send(err.toString());
         }else{
             if(result.rows.length === 0){
-                res.send(403).send('USERNAME/PASSWORD IS INCORRECT!!');
+                res.status(403).send('USERNAME/PASSWORD IS INCORRECT!!');
             }else{ //match the password 
                 var dbString = result.rows[0].password;
                 var salt = dbString.split('$')[2];
