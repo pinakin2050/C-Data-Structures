@@ -13,7 +13,7 @@ var config = {
     database: 'pinakin2050',
     host: 'db.imad.hasura-app.io',
     port: '5432',
-    password: 'db-pinakin2050-98484' // process.env.DB_PASSWORD 
+    password:process.env.DB_PASSWORD 
 };
 
 app.get('/', function (req, res) {
@@ -75,51 +75,30 @@ app.post('/create-user',function(req,res){
     });
 });
 
-app.post('/signin', function (req, res) {
-    
-    var username = req.body.username;
-    var password = req.body.password;
-   
-   
-    pool.query('SELECT * FROM "user" WHERE username =$1', [username], function (err, result) {
-        
-        if (err) {
-          res.status(500).send(err.toString());
-      } else {
-          if(result.rows.length === 0)
-          {
-              res.send(403).send('Username/Password is Invalid');
-              
-          }
-          else
-          {
-              var dbString = result.rows[0].password;
-              var salt = dbString.split('$')[2];
-              var hashedPassword = hash(password, salt);
-              
-              if(hashedPassword === dbString) {
-                  
-                  //Set the Session
-                  //req.session.auth = {userId: result.rows[0].id};
-                  
-                  res.send('credentials are correct');
-              }
-              else {
-                  res.send(403).send('Username/Password is Invalid');
-              }
-              
-          }
-      }
-        
-        
-    });
-});
 
 app.post('/login',function(req,res){
     var username = req.body.username;
     var password = req.body.password;
     
-    res.send("hello!");
+    pool.query('SELECT * FROM "user" WHERE username=$1',[username],function(err,result){
+    
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+            if(result.rows.length === 0){
+                res.status(403).send('USERNAME/PASSWORD IS INCORRECT!!');
+            }else{ //match the password 
+                var dbString = result.rows[0].password;
+                var salt = dbString.split('$')[2];
+                var hashedPassword = hash(password,salt);
+                if(hashedPassword === dbString){
+                    res.send("CREDENTIALS CORRECT...");
+                }else{
+                    res.status(403).send("USERNAME/PASSWORD IS INVALID!!!");
+                }
+            }
+        }
+    });
 });
 
 
